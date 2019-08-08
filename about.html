@@ -15,197 +15,171 @@
 				<link rel="stylesheet" type="text/css" href="css/styleIE.css" />
 		<![endif]-->
 		<script src="https://code.jquery.com/jquery-2.0.0.js"></script>
-    <script type="text/javascript" src="js/modernizr.custom.11333.js"></script>
+<script type="text/javascript" src="js/modernizr.custom.11333.js"></script>
 
-	
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script> <!-- საძიებო სისტემის წყარო -->
-		<script>                                                                              <!-- საძიებო სისტემის ჯავასკრიპტი -->
-			$(document).ready(function() {
-				$('.nav-tabs > li > a').click(function(event){
-					event.preventDefault();//stop browser to take action for clicked anchor
-					
-					//get displaying tab content jQuery selector
-					var active_tab_selector = $('.nav-tabs > li.active > a').attr('href');					
-					
-					//find actived navigation and remove 'active' css
-					var actived_nav = $('.nav-tabs > li.active');
-					actived_nav.removeClass('active');
-					
-					//add 'active' css into clicked navigation
-					$(this).parents('li').addClass('active');
-					
-					//hide displaying tab content
-					$(active_tab_selector).removeClass('active');
-					$(active_tab_selector).addClass('hide');
-					
-					//show target tab content
-					var target_tab_selector = $(this).attr('href');
-					$(target_tab_selector).removeClass('hide');
-					$(target_tab_selector).addClass('active');
-				});
-			});
-		</script>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script> <!-- საძიებო სისტემის წყარო -->
+<script>                                                                              <!-- საძიებო სისტემის ჯავასკრიპტი -->
+	$(document).ready(function() {
+	$('.nav-tabs > li > a').click(function(event){
+		event.preventDefault();//stop browser to take action for clicked anchor
+
+		//get displaying tab content jQuery selector
+		var active_tab_selector = $('.nav-tabs > li.active > a').attr('href');					
+
+		//find actived navigation and remove 'active' css
+		var actived_nav = $('.nav-tabs > li.active');
+		actived_nav.removeClass('active');
+
+		//add 'active' css into clicked navigation
+		$(this).parents('li').addClass('active');
+
+		//hide displaying tab content
+		$(active_tab_selector).removeClass('active');
+		$(active_tab_selector).addClass('hide');
+
+		//show target tab content
+		var target_tab_selector = $(this).attr('href');
+		$(target_tab_selector).removeClass('hide');
+		$(target_tab_selector).addClass('active');
+	});
+	});
+</script>
 </head>
 
-<body>
+<body>		
+<header>
+	<div class = "header-background">
+	<div class = "header-fixed-background">
 
-		
-		
-    <header>
-       
-	  
-		
-		<div class = "header-background">
-		<div class = "header-fixed-background">
-		
-        <div id="minibar">
-		<section class="main">
-				<div class="wrapper-demo">
-					<div id="dd" class="wrapper-dropdown-5 geo-font" tabindex="1"><img src="img/lang/choose.png" ><p>ენა</p>
-						<ul class="dropdown">
-						
-							<li><a href="#"><i class="geo-lang geo-font"></i><p>ქართული</p></a> </li>
-							<li><a href="#"><i class="rus-lang"></i><p>русский</p></a></li>
-							<li><a href="#"><i class="eng-lang "></i><p>English</p></a></li>
-							
-							
-						</ul>
-					</div>
-				​</div>
-			</section>
-            <div id="mbcontent">
-			
-                <ul>
-                    <li><a href="#home">+995 598 511 000</a></li>
-                    <li><a href="#news">GeoSky4u@gmail.com</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                 
-                    <li style="float:right">
-                        <button id="playpausebtn" class = "grow"></button>
-                        <button id="mutebtn"class = "grow"></button>
-                    </li>
-					
-                    <div style="float:right">
+	<div id="minibar">
+	<section class="main">
+			<div class="wrapper-demo">
+				<div id="dd" class="wrapper-dropdown-5 geo-font" tabindex="1"><img src="img/lang/choose.png" ><p>ენა</p>
+					<ul class="dropdown">
+						<li><a href="#"><i class="geo-lang geo-font"></i><p>ქართული</p></a> </li>
+						<li><a href="#"><i class="rus-lang"></i><p>русский</p></a></li>
+						<li><a href="#"><i class="eng-lang "></i><p>English</p></a></li>
+					</ul>
+				</div>
+			​</div>
+		</section>
+	<div id="mbcontent">
 
-                        <li class="icostyle grow" style="background:url('img/ico/social/facebook.png')">
-                            <a href="https://www.facebook.com/GeoSky4u/"></a>
-                        </li>
-                        <li class="icostyle grow" style="background:url('img/ico/social/twitter.png')">
-                            <a href="#about"></a>
-                        </li>
-                        <li class="icostyle grow" style="background:url('img/ico/social/youtube.png')">
-                            <a href="#about"></a>
-                        </li>
-                        <li class="icostyle grow" style="background:url('img/ico/social/google.png')" "width:150px">
-                            <a href="#about"></a>
-                        </li>
-						
-                    </div>
-					
-                </ul>
-				
-				
-            </div>
-			
-        </div>
-	
-		
-              <div id="menu" >
-            <!-- მენიუ  -->
-			<div id = "head-content">
-			
+	<ul>
+	    <li><a href="#home">+995 598 511 000</a></li>
+	    <li><a href="#news">GeoSky4u@gmail.com</a></li>
+	    <li><a href="#contact">Contact</a></li>
 
-			
-				<div class="flex log-reg-button">
-				
-  <a href="#0" id="myBtn" class="bttn geo-font">შესვლა / რეგისტრაცია</a>
-</div>
+	    <li style="float:right">
+		<button id="playpausebtn" class = "grow"></button>
+		<button id="mutebtn"class = "grow"></button>
+	    </li>
+
+	    <div style="float:right">
+
+		<li class="icostyle grow" style="background:url('img/ico/social/facebook.png')">
+		    <a href="https://www.facebook.com/GeoSky4u/"></a>
+		</li>
+		<li class="icostyle grow" style="background:url('img/ico/social/twitter.png')">
+		    <a href="#about"></a>
+		</li>
+		<li class="icostyle grow" style="background:url('img/ico/social/youtube.png')">
+		    <a href="#about"></a>
+		</li>
+		<li class="icostyle grow" style="background:url('img/ico/social/google.png')" "width:150px">
+		    <a href="#about"></a>
+		</li>
+
+	    </div>
+	</ul>
+	</div>
+	</div>
+	<div id="menu" >
+	<!-- მენიუ  -->
+		<div id = "head-content">
+
+
+
+			<div class="flex log-reg-button">
+
+	<a href="#0" id="myBtn" class="bttn geo-font">შესვლა / რეგისტრაცია</a>
+	</div>
 
 	<div  class="flex float-left" >
-  <a href="#0" class="bttn geo-font">შეუკვეთეთ ტური</a>
-</div>
+	<a href="#0" class="bttn geo-font">შეუკვეთეთ ტური</a>
+	</div>
 
-            <div id="logo">
-                <img src="img/logo.png" alt="Smiley face" height="100" width="100">
-            </div>
-		
-            <h1 class = "move-in-out animated css geo-font">ისიამოვნეთ ცხოვრებით "ჯეოსქაისთან" ერთად</h1>
-			<form method="get" action="/search" class = "geo-font" id="search">
-  <input name="q" type="text" size="40" placeholder="ძიება " />
-</form>
-            <div class="menu">
+	<div id="logo">
+	<img src="img/logo.png" alt="Smiley face" height="100" width="100">
+	</div>
 
+	<h1 class = "move-in-out animated css geo-font">ისიამოვნეთ ცხოვრებით "ჯეოსქაისთან" ერთად</h1>
+		<form method="get" action="/search" class = "geo-font" id="search">
+	<input name="q" type="text" size="40" placeholder="ძიება " />
+	</form>
+	<div class="menu">
+	<ul class="dropdownmenulist geo-font go">
+	    <li ><a href="#">მთავარი</a>		 
+	    </li>
+	    <li><a href="#">სიახლეები</a>
+		<ul>
+		    <li> <a href="/blah">Web design & development</a>
 
-			
-                <ul class="dropdownmenulist geo-font go">
-                    <li ><a href="#">მთავარი</a>
-                        
+		    </li>
+		    <li> <a href="/blah">Web hosting</a>
 
+		    </li>
+		    <li> <a href="/blah">Branding</a>
 
-                    </li>
-                    <li><a href="#">სიახლეები</a>
-                        <ul>
-                            <li> <a href="/blah">Web design & development</a>
+		    </li>
+		    <li> <a href="/blah">Digital Marketing</a>
 
-                            </li>
-                            <li> <a href="/blah">Web hosting</a>
+		    </li>
+		    <li>
+			<a href="/blah">Software Development</a>
 
-                            </li>
-                            <li> <a href="/blah">Branding</a>
+		    </li>
+		</ul>
+	    </li>
+	    <li class="dropdownmenulist" ><a href="#">ტურები</a>
+				<ul class = "mainselect">
 
-                            </li>
-                            <li> <a href="/blah">Digital Marketing</a>
+		    <li> <a href="/blah">საქართველო</a>
+	<img src="img/georgia.jpg" alt="Smiley face" height="200" width="200">
+		    </li>
+		    <li> <a href="/blah">ეგვიპტე</a>
 
-                            </li>
-                            <li>
-                                <a href="/blah">Software Development</a>
+		    </li>
+		    <li> <a href="/blah">საბერძნეთი</a>
 
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdownmenulist" ><a href="#">ტურები</a>
-					<ul class = "mainselect">
-					
-                            <li> <a href="/blah">საქართველო</a>
-<img src="img/georgia.jpg" alt="Smiley face" height="200" width="200">
-                            </li>
-                            <li> <a href="/blah">ეგვიპტე</a>
+		    </li>
+		    <li> <a href="/blah">საფრანგეთი</a>
 
-                            </li>
-                            <li> <a href="/blah">საბერძნეთი</a>
+		    </li>
+		    <li>
+			<a href="/blah">ამერიკა</a>
+		    </li>
+		</ul>
+				</li>
+	    <li class="dropdownmenulist"><a href="#">სასტუმროები</a></li>
 
-                            </li>
-                            <li> <a href="/blah">საფრანგეთი</a>
+	    <li><a href="#">ავია ბილეთები</a></li>
 
-                            </li>
-                            <li>
-                                <a href="/blah">ამერიკა</a>
+	    <li><a href="#">ჩვენს შესახებ</a></li>
+	    <li><a href="contact.html">დაგვიკავშირდით</a></li>
+	</ul>
 
-                            </li>
-							
-							
-                        </ul>
-					</li>
-                    <li class="dropdownmenulist"><a href="#">სასტუმროები</a></li>
-                
-                    <li><a href="#">ავია ბილეთები</a></li>
-                 
-                    <li><a href="#">ჩვენს შესახებ</a></li>
-                    <li><a href="contact.html">დაგვიკავშირდით</a></li>
-                </ul>
+	</div>
+	</div>
+	</div>
 
-            </div>
-        </div>
-		</div>
-		
-		</div>
-		</div>
-		
-        <div class="spacer">
-            <!-- სიცარიელე რომ კონტენტი იყოს მენიუს ქვემოთ -->
-        </div>
-		
-    </header>
+	</div>
+	</div>
+	<div class="spacer">
+	<!-- სიცარიელე რომ კონტენტი იყოს მენიუს ქვემოთ -->
+	</div>
+</header>
 	<div id="myModal" class="modal">
 		<div class="login-box">
 		<div class="modal-content">
@@ -268,97 +242,66 @@
                         <a href="tour.html" class="circle  about-cont move-in-out animated css">Elastic Image Slideshow with Thumbnail Preview</a>
                     </div>
                     <div class="ss-right ">
-                        <h3 class = "geo-font">
-
-                            
-							<span>მოგესალმებათ კომპანია ჯეოსქაი და მადლობას გიხდით რომ დაინტერესდით ჩვენი მომსახურებით</span>
+                        <h3 class = "geo-font">                        
+				<span>მოგესალმებათ კომპანია ჯეოსქაი და მადლობას გიხდით რომ დაინტერესდით ჩვენი მომსახურებით</span>
                         </h3>
                     </div>
                 </div>
-           
- 
-
-            
-
-               
-               
-              
-
             </div>
         </div>
-    
-	
-               
-              
+    </div>
+</div>	
+<footer class="footer-distributed ">
 
-            </div>
-        </div>
+	<div class="footer-left geo-font go">
+
+	<span> <img src="img/logo.png" alt="Smiley face" height="100" width="100"></span>
+
+		<p class="footer-links">
+			<a href="#">მთავარი</a>
+
+			<a href="#">სიახლეები</a>
+
+			<a href="#">სასტუმროები</a>
+			<a href="#">ტურები</a>
+			<a href="#">დაგვიკავშირდით</a>
+		</p>
+
+		<p class="footer-company-name">ჯეოსქაი &copy; 2017 ALL RIGHTS RESERVED</p>
+	</div>
+
+	<div class="footer-center">
+
+		<div>
+			<i class="fa fa-map-marker"></i>
+			<p><span>ალექსანდრე გრიბოედოვის N32</span> თბილისი, საქართველო</p>
+		</div>
+
+		<div>
+			<i class="fa fa-phone"></i>
+			<p>+995 598 511 000</p>
+		</div>
+
+		<div>
+			<i class="fa fa-envelope"></i>
+			<p><a href="mailto:support@company.com">GeoSky4u@gmail.com</a></p>
+		</div>
+
+	</div>
+
+	<div class="footer-right geo-font">
+
+		<p class="footer-company-about">
+			<span>კომპანიის შესახებ</span>
+			მოგესალმებით, 
+		</p>
+
+
+	</div>
+
+</footer>
 		
-		
-	
-	
-	
-	
-		
-		
-	
-		
-			
-	
-		
-			
-		
-	<footer class="footer-distributed ">
-
-			<div class="footer-left geo-font go">
-
-			<span> <img src="img/logo.png" alt="Smiley face" height="100" width="100"></span>
-
-				<p class="footer-links">
-					<a href="#">მთავარი</a>
-					
-					<a href="#">სიახლეები</a>
-					
-					<a href="#">სასტუმროები</a>
-					<a href="#">ტურები</a>
-					<a href="#">დაგვიკავშირდით</a>
-				</p>
-
-				<p class="footer-company-name">ჯეოსქაი &copy; 2017 ALL RIGHTS RESERVED</p>
-			</div>
-
-			<div class="footer-center">
-
-				<div>
-					<i class="fa fa-map-marker"></i>
-					<p><span>ალექსანდრე გრიბოედოვის N32</span> თბილისი, საქართველო</p>
-				</div>
-
-				<div>
-					<i class="fa fa-phone"></i>
-					<p>+995 598 511 000</p>
-				</div>
-
-				<div>
-					<i class="fa fa-envelope"></i>
-					<p><a href="mailto:support@company.com">GeoSky4u@gmail.com</a></p>
-				</div>
-
-			</div>
-
-			<div class="footer-right geo-font">
-
-				<p class="footer-company-about">
-					<span>კომპანიის შესახებ</span>
-					მოგესალმებით, 
-				</p>
-
-
-			</div>
-
-		</footer>
-		
-		<div id='toTop' class = "move-in-out animated css" ></div>
+	<div id='toTop' class = "move-in-out animated css" ></div>
 		
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
@@ -629,9 +572,6 @@
 
             });
         </script>
-
-       
-    
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script>
