@@ -1,25 +1,20 @@
-<? 
-include ("db.php");
-if(isset($_POST[full]) and isset($_POST[mob]) and isset($_POST[email]) and isset($_GET[id]) and $_GET[act] == 'sent')
-{
-	$name = $_POST[full];
-	$mobile = $_POST[mob];
-	$email = $_POST[email];
-	$qty = $_POST[qty];
-	if(empty($name) or empty($mobile) or empty($email))
-	{
-		echo 'empty';
-	}
-	else
-	{
-		$id = trim(strip_tags(mysql_real_escape_string($_GET[id])));
-		$date = date("Y-m-d H:i:s");
-		$InsertOrder = mysql_query("INSERT INTO orders(`qty`,`tour_id`,`user`,`mobile`,`email`,`date`) VALUES('$qty','$id','$name','$mobile','$email','$date')") or die(mysql_error());
-		if($InsertOrder == true)
-		{
-			
-		}
-	}
+<?
+include("db.php");
+if (isset($_POST[full]) and isset($_POST[mob]) and isset($_POST[email]) and isset($_GET[id]) and $_GET[act] == 'sent') {
+    $name   = $_POST[full];
+    $mobile = $_POST[mob];
+    $email  = $_POST[email];
+    $qty    = $_POST[qty];
+    if (empty($name) or empty($mobile) or empty($email)) {
+        echo 'empty';
+    } else {
+        $id   = trim(strip_tags(mysql_real_escape_string($_GET[id])));
+        $date = date("Y-m-d H:i:s");
+        $InsertOrder = mysql_query("INSERT INTO orders(`qty`,`tour_id`,`user`,`mobile`,`email`,`date`) VALUES('$qty','$id','$name','$mobile','$email','$date')") or die(mysql_error());
+        if ($InsertOrder == true) {
+            
+        }
+    }
 }
 ?>
 
@@ -29,113 +24,105 @@ if(isset($_POST[full]) and isset($_POST[mob]) and isset($_POST[email]) and isset
 <head>
     <meta charset="UTF-8">
     <title><?
-															if(isset($_GET['id']))
-															{
-																$id = trim(strip_tags(mysql_real_escape_string($_GET[id])));
-																$GetItem = mysql_query("SELECT * FROM tours WHERE id='".$id."'");
-																$GetItemRow = mysql_fetch_array($GetItem);
-																echo $GetItemRow[name_geo];
-															}
-															if(!isset($_GET['id']))
-															{
-																echo 'Item not found';
-															}
-		
-														?></title>
+if (isset($_GET['id'])) {
+    $id         = trim(strip_tags(mysql_real_escape_string($_GET[id])));
+    $GetItem    = mysql_query("SELECT * FROM tours WHERE id='" . $id . "'");
+    $GetItemRow = mysql_fetch_array($GetItem);
+    echo $GetItemRow[name_geo];
+}
+if (!isset($_GET['id'])) {
+    echo 'Item not found';
+}
+
+?></title>
     <link rel="stylesheet" type="text/css" href="css/lang-changer.css">
    
 <link rel="stylesheet" type="text/css" href="css/tour-css.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-	 <link rel="stylesheet" type="text/css" href="css/pricelist.css" />
-	<link rel="icon" type="image/png" href="img/logo.png" sizes="32x32">
+     <link rel="stylesheet" type="text/css" href="css/pricelist.css" />
+    <link rel="icon" type="image/png" href="img/logo.png" sizes="32x32">
     <link href='http://fonts.googleapis.com/css?family=Kelly+Slab' rel='stylesheet' type='text/css' />
     <!--[if lt IE 9]>
-				<link rel="stylesheet" type="text/css" href="css/styleIE.css" />
-		<![endif]-->
-		<script src="https://code.jquery.com/jquery-2.0.0.js"></script>
+                <link rel="stylesheet" type="text/css" href="css/styleIE.css" />
+        <![endif]-->
+        <script src="https://code.jquery.com/jquery-2.0.0.js"></script>
     <script type="text/javascript" src="js/modernizr.custom.11333.js"></script>
 
-	
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script> <!-- საძიებო სისტემის წყარო -->
-		<script>                                                                              <!-- საძიებო სისტემის ჯავასკრიპტი -->
-			$(document).ready(function() {
-				$('.nav-tabs > li > a').click(function(event){
-					event.preventDefault();//stop browser to take action for clicked anchor
-					
-					//get displaying tab content jQuery selector
-					var active_tab_selector = $('.nav-tabs > li.active > a').attr('href');					
-					
-					//find actived navigation and remove 'active' css
-					var actived_nav = $('.nav-tabs > li.active');
-					actived_nav.removeClass('active');
-					
-					//add 'active' css into clicked navigation
-					$(this).parents('li').addClass('active');
-					
-					//hide displaying tab content
-					$(active_tab_selector).removeClass('active');
-					$(active_tab_selector).addClass('hide');
-					
-					//show target tab content
-					var target_tab_selector = $(this).attr('href');
-					$(target_tab_selector).removeClass('hide');
-					$(target_tab_selector).addClass('active');
-				});
-			});
-		</script>
+    
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script> <!-- საძიებო სისტემის წყარო -->
+        <script>                                                                              <!-- საძიებო სისტემის ჯავასკრიპტი -->
+            $(document).ready(function() {
+                $('.nav-tabs > li > a').click(function(event){
+                    event.preventDefault();//stop browser to take action for clicked anchor
+                    
+                    //get displaying tab content jQuery selector
+                    var active_tab_selector = $('.nav-tabs > li.active > a').attr('href');                    
+                    
+                    //find actived navigation and remove 'active' css
+                    var actived_nav = $('.nav-tabs > li.active');
+                    actived_nav.removeClass('active');
+                    
+                    //add 'active' css into clicked navigation
+                    $(this).parents('li').addClass('active');
+                    
+                    //hide displaying tab content
+                    $(active_tab_selector).removeClass('active');
+                    $(active_tab_selector).addClass('hide');
+                    
+                    //show target tab content
+                    var target_tab_selector = $(this).attr('href');
+                    $(target_tab_selector).removeClass('hide');
+                    $(target_tab_selector).addClass('active');
+                });
+            });
+        </script>
 </head>
 
 <body>
-
-		
-		<?php include "includes/header.php"; ?>
-  
+        
+        <?php
+include "includes/header.php";
+?>
  
-	
-	   <div class="spacer">
+       <div class="spacer">
             <!-- სიცარიელე რომ კონტენტი იყოს მენიუს ქვემოთ -->
         </div>
-	
-
-	
-    <? 
-include ("db.php");
-if(isset($_POST[full]) and isset($_POST[mob]) and isset($_POST[email]) and isset($_GET[id]) and $_GET[act] == 'sent')
-{
-	$name = $_POST[full];
-	$mobile = $_POST[mob];
-	$email = $_POST[email];
-	$qty = $_POST[qty];
-	if(empty($name) or empty($mobile) or empty($email))
-	{
-		echo '<div id = "ok-div">
+ 
+    <?
+include("db.php");
+if (isset($_POST[full]) and isset($_POST[mob]) and isset($_POST[email]) and isset($_GET[id]) and $_GET[act] == 'sent') {
+    $name   = $_POST[full];
+    $mobile = $_POST[mob];
+    $email  = $_POST[email];
+    $qty    = $_POST[qty];
+    if (empty($name) or empty($mobile) or empty($email)) {
+        echo '<div id = "ok-div">
 <img src="img/logo.png" alt="Smiley face" height="200" width="200">
 <p style="color:red;">თქვენ გამოტოვეთ საჭირო ველები! </p>
 
 </div>';
-	}
-	else
-	{
-		$id = trim(strip_tags(mysql_real_escape_string($_GET[id])));
-		$date = date("Y-m-d H:i:s");
-		$InsertOrder = mysql_query("INSERT INTO orders(`qty`,`tour_id`,`user`,`mobile`,`email`,`date`) VALUES('$qty','$id','$name','$mobile','$email','$date')") or die(mysql_error());
-		if($InsertOrder == true)
-		{
-		
-		}
-	}
+    } else {
+        $id   = trim(strip_tags(mysql_real_escape_string($_GET[id])));
+        $date = date("Y-m-d H:i:s");
+        $InsertOrder = mysql_query("INSERT INTO orders(`qty`,`tour_id`,`user`,`mobile`,`email`,`date`) VALUES('$qty','$id','$name','$mobile','$email','$date')") or die(mysql_error());
+        if ($InsertOrder == true) {
+            
+        }
+    }
 }
 ?>
-	<div id="bookform" class="modal1">
-		<div class="login-box">
-		<div class="modal-content">
-		 <span class="close2">&times;</span>
+   <div id="bookform" class="modal1">
+        <div class="login-box">
+        <div class="modal-content">
+         <span class="close2">&times;</span>
     <div class="lb-header">
-	
-	
-	 </div>
+    
+    
+     </div>
       <h2 class = "geo-font" > </h2>
-	<form action="tour.php?id=<? echo $_GET[id]; ?>&act=sent" method="POST">
+    <form action="tour.php?id=<?
+echo $_GET[id];
+?>&act=sent" method="POST">
      <div class="u-form-group">
         <input class = "geo-font" type="text" name="full" placeholder="სახელი გვარი"/>
       </div>
@@ -145,444 +132,385 @@ if(isset($_POST[full]) and isset($_POST[mob]) and isset($_POST[email]) and isset
       <div class="u-form-group">
         <input class = "geo-font" name="email" type="email" placeholder="ელექტრონული ფოსტა"/>
       </div>
-	
-	<div class="tourist-number geo-font">
-   
-  
- 
-  
- 
+    
+    <div class="tourist-number geo-font">
+
 </div>
 
 <!--
   <label>
-		<textarea class = "additional-box" name="note" cols="1" rows="1" placeholder="დამატებითი მოთხოვნები..."></textarea>
-	</label> -->
+        <textarea class = "additional-box" name="note" cols="1" rows="1" placeholder="დამატებითი მოთხოვნები..."></textarea>
+    </label> -->
 
-	<input type="submit" class=" geo-font bookbtn" value="შეკვეთა">
+    <input type="submit" class=" geo-font bookbtn" value="შეკვეთა">
  </form>
  
  </div>
  </div>
  </div>
-	
-
-	
-		
-	
-	
-	
-	
-	
-	
-	
-	
+ 
+    <div class = "tour-title geo-font">
     
-	<div class = "tour-title geo-font">
-	
-	<h2>	<?
-							if(isset($_GET['id']))
-							{
-								$id = trim(strip_tags(mysql_real_escape_string($_GET[id])));
-								$GetItem = mysql_query("SELECT * FROM tours WHERE id='".$id."'");
-								$GetItemRow = mysql_fetch_array($GetItem);
-								if (!$GetItemRow) { // add this check.
-    die('Invalid query: ' . mysql_error());
+    <h2>    <?
+if (isset($_GET['id'])) {
+    $id         = trim(strip_tags(mysql_real_escape_string($_GET[id])));
+    $GetItem    = mysql_query("SELECT * FROM tours WHERE id='" . $id . "'");
+    $GetItemRow = mysql_fetch_array($GetItem);
+    if (!$GetItemRow) { // add this check.
+        die('Invalid query: ' . mysql_error());
+    }
+    echo $GetItemRow[name_geo];
 }
-								echo $GetItemRow[name_geo];
-							}
-							if(!isset($_GET['id']))
-							{
-								echo 'Item not found';
-							}
-		
-							?></h2>
-	
-	</div>
-	<div id = "tour-content">
-	<div class="container">
-			
-			
-		
-			
-			<section class="main">
-			
-				<div class="ia-container">
-				
-				
-			   <?
-	$id = trim(strip_tags(mysql_real_escape_string($_GET[id])));
-	$GetNews = mysql_query("SELECT * FROM news WHERE id='$id'");
-	$GetNewsRow = mysql_fetch_array($GetNews);
-	
-	echo '<div class = "tour-title geo-font">
-	
-	<h2>'.$GetNewsRow[name_geo].'</h2>
-	
-	</div>
-	<div id = "tour-content">
-			
-		
-			
-			<div id = "news-image">
-			
-			 <img src="'.$GetNewsRow[img].'" alt="image">
-			</div>
-		
-		<div id = "tour-desc">
-		<p>'.$GetNewsRow[l_description_geo].'</p>
-		
-	
-	
-	</div>
+if (!isset($_GET['id'])) {
+    echo 'Item not found';
+}
 
+?></h2>
+    
+    </div>
+    <div id = "tour-content">
+    <div class="container">
+     
+            <section class="main">
+            
+                <div class="ia-container">
+                             
+               <?
+$id         = trim(strip_tags(mysql_real_escape_string($_GET[id])));
+$GetNews    = mysql_query("SELECT * FROM news WHERE id='$id'");
+$GetNewsRow = mysql_fetch_array($GetNews);
 
-<!-- The Modal -->
-
-	
-	
-	</div>';
-	?>
-			</section>
-			  <a href="#" id="bookbutton" class="button geo-font">მომსახურების შეკვეთა</a>
-        </div>
-		<div id = "tour-desc">
-	  <?
-																if(isset($_GET['id']))
-																{
-																	$id = trim(strip_tags(mysql_real_escape_string($_GET[id])));
-																	$GetItem = mysql_query("SELECT * FROM tours WHERE id='".$id."'");
-																	$GetItemRow = mysql_fetch_array($GetItem);
-																	echo $GetItemRow[l_description_geo];
-																}
-																if(!isset($_GET['id']))
-																{
-																	echo 'Item not found';
-																}
-																
-																
-																echo '
-																<div class="fb-comments" data-href="http://geosky.ge/item.php?id='.$_GET[id].'" data-numposts="5"></div>
-																<div class="fb-like" data-href="http://geosky.ge/item.php?id='.$_GET[id].'" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-																';
-															?>
-		
-	
-	
-	</div>
-
-
-<!-- The Modal -->
-
-	
-	
-	</div>
-	
+echo '<div class = "tour-title geo-font">
+    
+    <h2>' . $GetNewsRow[name_geo] . '</h2>
+    
+    </div>
+    <div id = "tour-content">
        
-		
-		
-	
-	
-	
-		
-		
-	
-		
-			
-	
-		
-			
-		
-<?php include "includes/footer.php";?>
-		
-		<div id='toTop' class = "move-in-out animated css" ></div>
-		
+            <div id = "news-image">
+            
+             <img src="' . $GetNewsRow[img] . '" alt="image">
+            </div>
+        
+        <div id = "tour-desc">
+        <p>' . $GetNewsRow[l_description_geo] . '</p>
+
+    </div>
+<!-- The Modal -->    
+    </div>';
+?>
+           </section>
+              <a href="#" id="bookbutton" class="button geo-font">მომსახურების შეკვეთა</a>
+        </div>
+        <div id = "tour-desc">
+      <?
+if (isset($_GET['id'])) {
+    $id         = trim(strip_tags(mysql_real_escape_string($_GET[id])));
+    $GetItem    = mysql_query("SELECT * FROM tours WHERE id='" . $id . "'");
+    $GetItemRow = mysql_fetch_array($GetItem);
+    echo $GetItemRow[l_description_geo];
+}
+if (!isset($_GET['id'])) {
+    echo 'Item not found';
+}
+
+echo '
+	<div class="fb-comments" data-href="http://geosky.ge/item.php?id=' . $_GET[id] . '" data-numposts="5"></div>
+	<div class="fb-like" data-href="http://geosky.ge/item.php?id=' . $_GET[id] . '" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+';
+?>
+  
+    </div>
+<!-- The Modal -->  
+    </div>
+	    
+<?php
+include "includes/footer.php";
+?>
+       
+        <div id='toTop' class = "move-in-out animated css" ></div>
+        
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
         <script type="text/javascript">
-            $(function() {
+	$(function() {
 
-                var $sidescroll = (function() {
+	var $sidescroll = (function() {
 
-                    // the row elements
-                    var $rows = $('#ss-container > div.ss-row'),
-                        // we will cache the inviewport rows and the outside viewport rows
-                        $rowsViewport, $rowsOutViewport,
-                        // navigation menu links
-                        $links = $('#ss-links > a'),
-                        // the window element
-                        $win = $(window),
-                        // we will store the window sizes here
-                        winSize = {},
-                        // used in the scroll setTimeout function
-                        anim = false,
-                        // page scroll speed
-                        scollPageSpeed = 2000,
-                        // page scroll easing
-                        scollPageEasing = 'easeInOutExpo',
-                        // perspective?
-                        hasPerspective = false,
+	// the row elements
+	var $rows = $('#ss-container > div.ss-row'),
+	// we will cache the inviewport rows and the outside viewport rows
+	$rowsViewport, $rowsOutViewport,
+	// navigation menu links
+	$links = $('#ss-links > a'),
+	// the window element
+	$win = $(window),
+	// we will store the window sizes here
+	winSize = {},
+	// used in the scroll setTimeout function
+	anim = false,
+	// page scroll speed
+	scollPageSpeed = 2000,
+	// page scroll easing
+	scollPageEasing = 'easeInOutExpo',
+	// perspective?
+	hasPerspective = false,
 
-                        perspective = hasPerspective && Modernizr.csstransforms3d,
-                        // initialize function
-                        init = function() {
+	perspective = hasPerspective && Modernizr.csstransforms3d,
+	// initialize function
+	init = function() {
 
-                            // get window sizes
-                            getWinSize();
-                            // initialize events
-                            initEvents();
-                            // define the inviewport selector
-                            defineViewport();
-                            // gets the elements that match the previous selector
-                            setViewportRows();
-                            // if perspective add css
-                            if (perspective) {
-                                $rows.css({
-                                    '-webkit-perspective': 600,
-                                    '-webkit-perspective-origin': '50% 0%'
-                                });
-                            }
-                            // show the pointers for the inviewport rows
-                            $rowsViewport.find('a.ss-circle').addClass('ss-circle-deco');
-                            // set positions for each row
-                            placeRows();
+	// get window sizes
+	getWinSize();
+	// initialize events
+	initEvents();
+	// define the inviewport selector
+	defineViewport();
+	// gets the elements that match the previous selector
+	setViewportRows();
+	// if perspective add css
+	if (perspective) {
+	$rows.css({
+	    '-webkit-perspective': 600,
+	    '-webkit-perspective-origin': '50% 0%'
+	});
+	}
+	// show the pointers for the inviewport rows
+	$rowsViewport.find('a.ss-circle').addClass('ss-circle-deco');
+	// set positions for each row
+	placeRows();
 
-                        },
-                        // defines a selector that gathers the row elems that are initially visible.
-                        // the element is visible if its top is less than the window's height.
-                        // these elements will not be affected when scrolling the page.
-                        defineViewport = function() {
+	},
+	// defines a selector that gathers the row elems that are initially visible.
+	// the element is visible if its top is less than the window's height.
+	// these elements will not be affected when scrolling the page.
+	defineViewport = function() {
 
-                            $.extend($.expr[':'], {
+	$.extend($.expr[':'], {
 
-                                inviewport: function(el) {
-                                    if ($(el).offset().top < winSize.height) {
-                                        return true;
-                                    }
-                                    return false;
-                                }
+	inviewport: function(el) {
+	    if ($(el).offset().top < winSize.height) {
+		return true;
+	    }
+	    return false;
+	}
 
-                            });
+	});
 
-                        },
-                        // checks which rows are initially visible 
-                        setViewportRows = function() {
+	},
+	// checks which rows are initially visible 
+	setViewportRows = function() {
 
-                            $rowsViewport = $rows.filter(':inviewport');
-                            $rowsOutViewport = $rows.not($rowsViewport)
+	$rowsViewport = $rows.filter(':inviewport');
+	$rowsOutViewport = $rows.not($rowsViewport)
 
-                        },
-                        // get window sizes
-                        getWinSize = function() {
+	},
+	// get window sizes
+	getWinSize = function() {
 
-                            winSize.width = $win.width();
-                            winSize.height = $win.height();
+	winSize.width = $win.width();
+	winSize.height = $win.height();
 
-                        },
-                        // initialize some events
-                        initEvents = function() {
+	},
+	// initialize some events
+	initEvents = function() {
 
-                            // navigation menu links.
-                            // scroll to the respective section.
-                            $links.on('click.Scrolling', function(event) {
+	// navigation menu links.
+	// scroll to the respective section.
+	$links.on('click.Scrolling', function(event) {
 
-                                // scroll to the element that has id = menu's href
-                                $('html, body').stop().animate({
-                                    scrollTop: $($(this).attr('href')).offset().top
-                                }, scollPageSpeed, scollPageEasing);
+	// scroll to the element that has id = menu's href
+	$('html, body').stop().animate({
+	    scrollTop: $($(this).attr('href')).offset().top
+	}, scollPageSpeed, scollPageEasing);
 
-                                return false;
+	return false;
 
-                            });
+	});
 
-                            $(window).on({
-                                // on window resize we need to redefine which rows are initially visible (this ones we will not animate).
-                                'resize.Scrolling': function(event) {
+	$(window).on({
+	// on window resize we need to redefine which rows are initially visible (this ones we will not animate).
+	'resize.Scrolling': function(event) {
 
-                                    // get the window sizes again
-                                    getWinSize();
-                                    // redefine which rows are initially visible (:inviewport)
-                                    setViewportRows();
-                                    // remove pointers for every row
-                                    $rows.find('a.ss-circle').removeClass('ss-circle-deco');
-                                    // show inviewport rows and respective pointers
-                                    $rowsViewport.each(function() {
+	    // get the window sizes again
+	    getWinSize();
+	    // redefine which rows are initially visible (:inviewport)
+	    setViewportRows();
+	    // remove pointers for every row
+	    $rows.find('a.ss-circle').removeClass('ss-circle-deco');
+	    // show inviewport rows and respective pointers
+	    $rowsViewport.each(function() {
 
-                                        $(this).find('div.ss-left')
-                                            .css({
-                                                left: '0%'
-                                            })
-                                            .end()
-                                            .find('div.ss-right')
-                                            .css({
-                                                right: '0%'
-                                            })
-                                            .end()
-                                            .find('a.ss-circle')
-                                            .addClass('ss-circle-deco');
+		$(this).find('div.ss-left')
+		    .css({
+			left: '0%'
+		    })
+		    .end()
+		    .find('div.ss-right')
+		    .css({
+			right: '0%'
+		    })
+		    .end()
+		    .find('a.ss-circle')
+		    .addClass('ss-circle-deco');
 
-                                    });
+	    });
 
-                                },
-                                // when scrolling the page change the position of each row	
-                                'scroll.Scrolling': function(event) {
+	},
+	// when scrolling the page change the position of each row    
+	'scroll.Scrolling': function(event) {
 
-                                    // set a timeout to avoid that the 
-                                    // placeRows function gets called on every scroll trigger
-                                    if (anim) return false;
-                                    anim = true;
-                                    setTimeout(function() {
+	    // set a timeout to avoid that the 
+	    // placeRows function gets called on every scroll trigger
+	    if (anim) return false;
+	    anim = true;
+	    setTimeout(function() {
 
-                                        placeRows();
-                                        anim = false;
+		placeRows();
+		anim = false;
 
-                                    }, 10);
+	    }, 10);
 
-                                }
-                            });
+	}
+	});
 
-                        },
-                        // sets the position of the rows (left and right row elements).
-                        // Both of these elements will start with -50% for the left/right (not visible)
-                        // and this value should be 0% (final position) when the element is on the
-                        // center of the window.
-                        placeRows = function() {
+	},
+	// sets the position of the rows (left and right row elements).
+	// Both of these elements will start with -50% for the left/right (not visible)
+	// and this value should be 0% (final position) when the element is on the
+	// center of the window.
+	placeRows = function() {
 
-                            // how much we scrolled so far
-                            var winscroll = $win.scrollTop(),
-                                // the y value for the center of the screen
-                                winCenter = winSize.height / 1.6 + winscroll;
+	// how much we scrolled so far
+	var winscroll = $win.scrollTop(),
+	// the y value for the center of the screen
+	winCenter = winSize.height / 1.6 + winscroll;
 
-                            // for every row that is not inviewport
-                            $rowsOutViewport.each(function(i) {
+	// for every row that is not inviewport
+	$rowsOutViewport.each(function(i) {
 
-                                var $row = $(this),
-                                    // the left side element
-                                    $rowL = $row.find('div.ss-left'),
-                                    // the right side element
-                                    $rowR = $row.find('div.ss-right'),
-                                    // top value
-                                    rowT = $row.offset().top;
+	var $row = $(this),
+	    // the left side element
+	    $rowL = $row.find('div.ss-left'),
+	    // the right side element
+	    $rowR = $row.find('div.ss-right'),
+	    // top value
+	    rowT = $row.offset().top;
 
-                                // hide the row if it is under the viewport
-                                if (rowT > winSize.height + winscroll) {
+	// hide the row if it is under the viewport
+	if (rowT > winSize.height + winscroll) {
 
-                                    if (perspective) {
+	    if (perspective) {
 
-                                        $rowL.css({
-                                            '-webkit-transform': 'translate3d(-75%, 0, 0) rotateY(-90deg) translate3d(-75%, 0, 0)',
-                                            'opacity': 0
-                                        });
-                                        $rowR.css({
-                                            '-webkit-transform': 'translate3d(75%, 0, 0) rotateY(90deg) translate3d(75%, 0, 0)',
-                                            'opacity': 0
-                                        });
+		$rowL.css({
+		    '-webkit-transform': 'translate3d(-75%, 0, 0) rotateY(-90deg) translate3d(-75%, 0, 0)',
+		    'opacity': 0
+		});
+		$rowR.css({
+		    '-webkit-transform': 'translate3d(75%, 0, 0) rotateY(90deg) translate3d(75%, 0, 0)',
+		    'opacity': 0
+		});
 
-                                    } else {
+	    } else {
 
-                                        $rowL.css({
-                                            left: '-50%'
-                                        });
-                                        $rowR.css({
-                                            right: '-50%'
-                                        });
+		$rowL.css({
+		    left: '-50%'
+		});
+		$rowR.css({
+		    right: '-50%'
+		});
 
-                                    }
+	    }
 
-                                }
-                                // if not, the row should become visible (0% of left/right) as it gets closer to the center of the screen.
-                                else {
+	}
+	// if not, the row should become visible (0% of left/right) as it gets closer to the center of the screen.
+	else {
 
-                                    // row's height
-                                    var rowH = $row.height(),
-                                        // the value on each scrolling step will be proporcional to the distance from the center of the screen to its height
-                                        factor = (((rowT + rowH / 2) - winCenter) / (winSize.height / 2 + rowH / 2)),
-                                        // value for the left / right of each side of the row.
-                                        // 0% is the limit
-                                        val = Math.max(factor * 50, 0);
+	    // row's height
+	    var rowH = $row.height(),
+		// the value on each scrolling step will be proporcional to the distance from the center of the screen to its height
+		factor = (((rowT + rowH / 2) - winCenter) / (winSize.height / 2 + rowH / 2)),
+		// value for the left / right of each side of the row.
+		// 0% is the limit
+		val = Math.max(factor * 50, 0);
 
-                                    if (val <= 0) {
+	    if (val <= 0) {
 
-                                        // when 0% is reached show the pointer for that row
-                                        if (!$row.data('pointer')) {
+		// when 0% is reached show the pointer for that row
+		if (!$row.data('pointer')) {
 
-                                            $row.data('pointer', true);
-                                            $row.find('.ss-circle').addClass('ss-circle-deco');
+		    $row.data('pointer', true);
+		    $row.find('.ss-circle').addClass('ss-circle-deco');
 
-                                        }
+		}
 
-                                    } else {
+	    } else {
 
-                                        // the pointer should not be shown
-                                        if ($row.data('pointer')) {
+		// the pointer should not be shown
+		if ($row.data('pointer')) {
 
-                                            $row.data('pointer', false);
-                                            $row.find('.ss-circle').removeClass('ss-circle-deco');
+		    $row.data('pointer', false);
+		    $row.find('.ss-circle').removeClass('ss-circle-deco');
 
-                                        }
+		}
 
-                                    }
+	    }
 
-                                    // set calculated values
-                                    if (perspective) {
+	    // set calculated values
+	    if (perspective) {
 
-                                        var t = Math.max(factor * 75, 0),
-                                            r = Math.max(factor * 90, 0),
-                                            o = Math.min(Math.abs(factor - 1), 1);
+		var t = Math.max(factor * 75, 0),
+		    r = Math.max(factor * 90, 0),
+		    o = Math.min(Math.abs(factor - 1), 1);
 
-                                        $rowL.css({
-                                            '-webkit-transform': 'translate3d(-' + t + '%, 0, 0) rotateY(-' + r + 'deg) translate3d(-' + t + '%, 0, 0)',
-                                            'opacity': o
-                                        });
-                                        $rowR.css({
-                                            '-webkit-transform': 'translate3d(' + t + '%, 0, 0) rotateY(' + r + 'deg) translate3d(' + t + '%, 0, 0)',
-                                            'opacity': o
-                                        });
+		$rowL.css({
+		    '-webkit-transform': 'translate3d(-' + t + '%, 0, 0) rotateY(-' + r + 'deg) translate3d(-' + t + '%, 0, 0)',
+		    'opacity': o
+		});
+		$rowR.css({
+		    '-webkit-transform': 'translate3d(' + t + '%, 0, 0) rotateY(' + r + 'deg) translate3d(' + t + '%, 0, 0)',
+		    'opacity': o
+		});
 
-                                    } else {
+	    } else {
 
-                                        $rowL.css({
-                                            left: -val + '%'
-                                        });
-                                        $rowR.css({
-                                            right: -val + '%'
-                                        });
+		$rowL.css({
+		    left: -val + '%'
+		});
+		$rowR.css({
+		    right: -val + '%'
+		});
 
-                                    }
+	    }
 
-                                }
+	}
 
-                            });
+	});
 
-                        };
+	};
 
-                    return {
-                        init: init
-                    };
+	return {
+	init: init
+	};
 
-                })();
+	})();
 
-                $sidescroll.init();
+	$sidescroll.init();
 
-            });
+	});
         </script>
+	    
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+	$(document).on('scroll', function() {
+	    if ($(this).scrollTop() > 1) {
+		$('header').addClass('sticky');
+	    } else {
+		$('header').removeClass('sticky');
+	    }
 
-       
-    
-
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script>
-        $(document).on('scroll', function() {
-            if ($(this).scrollTop() > 1) {
-                $('header').addClass('sticky');
-            } else {
-                $('header').removeClass('sticky');
-            }
-
-        });
-    </script>
-
-
+	});
+</script>
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="js/jquery.easeScroll.js"></script>
 <script>
@@ -648,37 +576,37 @@ $(document).ready(function() {
 
 
 </script>
-	<!-- jQuery if needed -->
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script type="text/javascript">
+    <!-- jQuery if needed -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script type="text/javascript">
 
-			function DropDown(el) {
-				this.dd = el;
-				this.initEvents();
-			}
-			DropDown.prototype = {
-				initEvents : function() {
-					var obj = this;
+            function DropDown(el) {
+                this.dd = el;
+                this.initEvents();
+            }
+            DropDown.prototype = {
+                initEvents : function() {
+                    var obj = this;
 
-					obj.dd.on('click', function(event){
-						$(this).toggleClass('active');
-						event.stopPropagation();
-					});	
-				}
-			}
+                    obj.dd.on('click', function(event){
+                        $(this).toggleClass('active');
+                        event.stopPropagation();
+                    });    
+                }
+            }
 
-			$(function() {
+            $(function() {
 
-				var dd = new DropDown( $('#dd') );
+                var dd = new DropDown( $('#dd') );
 
-				$(document).click(function() {
-					// all dropdowns
-					$('.wrapper-dropdown-5').removeClass('active');
-				});
+                $(document).click(function() {
+                    // all dropdowns
+                    $('.wrapper-dropdown-5').removeClass('active');
+                });
 
-			});
+            });
 
-		</script>
+        </script>
 <script>
 // Get the modal
 var modal = document.getElementById('myModal');
@@ -706,12 +634,6 @@ window.onclick = function(event) {
     }
 }
 </script>
-
-
-
-
-
-
 
 <script>
 // Get the modal
